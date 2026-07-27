@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--
+  READING LIST TEMPLATE — Third Room
+  1. Copy to reading/your-slug.html
+  2. Replace [PLACEHOLDER] values
+  3. Add a link on reading/index.html
+  4. Add an entry in assets/data/content-index.json
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[LIST TITLE] — Third Room</title>
+  <meta name="description" content="[SHORT DESCRIPTION FOR SEO]">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[LIST TITLE] — Third Room">
+  <meta property="og:description" content="[SHORT DESCRIPTION FOR SEO]">
+  <meta property="og:site_name" content="Third Room">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="alternate" type="application/rss+xml" title="Third Room RSS Feed" href="../feed.xml">
+  <script>(function(){var t=localStorage.getItem("thirdroom-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a href="../index.html" class="site-logo">Third Room</a>
+      <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" role="navigation" aria-label="Main navigation">
+        <form class="search-form" role="search" aria-label="Site search">
+          <label for="search-mobile" class="sr-only">Search</label>
+          <input type="search" id="search-mobile" class="search-input" name="q" placeholder="Search…" autocomplete="off">
+        </form>
+        <ul class="site-nav-list">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about/index.html">About</a></li>
+          <li><a href="../articles/index.html">Articles</a></li>
+          <li><a href="../discussions/index.html">Discussions</a></li>
+          <li><a href="../reading/index.html" aria-current="page">Reading Lists</a></li>
+          <li><a href="../books/index.html">Books</a></li>
+          <li><a href="../podcast/index.html">Podcast</a></li>
+          <li><a href="../guest-essays/index.html">Guest Essays</a></li>
+          <li><a href="../resources/index.html">Resources</a></li>
+          <li><a href="../participate/index.html">Participate</a></li>
+          <li><a href="../archive/index.html">Archive</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <form class="search-form" role="search" aria-label="Site search">
+          <label for="search-desktop" class="sr-only">Search</label>
+          <input type="search" id="search-desktop" class="search-input" name="q" placeholder="Search…" autocomplete="off">
+        </form>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode" title="Switch to light mode">
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <article class="container container--narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a><span class="breadcrumb-sep">/</span>
+        <a href="index.html">Reading Lists</a><span class="breadcrumb-sep">/</span>
+        <span aria-current="page">[LIST TITLE]</span>
+      </nav>
+
+      <header class="page-header">
+        <h1 class="page-title">[LIST TITLE]</h1>
+        <p class="page-subtitle">[THEME — e.g. From skepticism to contemporary debates]</p>
+        <div class="page-meta">
+          <span class="badge">[DIFFICULTY — Beginner / Intermediate / Advanced]</span>
+          <span>~[X] hours</span>
+          <span>Topic: <a href="../topics/[TOPIC-SLUG]/index.html">[TOPIC NAME]</a></span>
+        </div>
+      </header>
+
+      <section class="content-section prose" aria-labelledby="about-heading">
+        <h2 id="about-heading" class="content-section-title">About This List</h2>
+        <p>[Brief description of what this list covers and who it is for.]</p>
+      </section>
+
+      <!-- Books — numbered in suggested reading order -->
+      <section class="content-section" aria-labelledby="books-heading">
+        <h2 id="books-heading" class="content-section-title">Books</h2>
+        <div class="reading-item">
+          <span class="reading-item-number">1</span>
+          <div class="reading-item-content">
+            <h4>[Author, Book Title]</h4>
+            <p class="reading-item-meta">Book · [optional note]</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" aria-labelledby="papers-heading">
+        <h2 id="papers-heading" class="content-section-title">Papers</h2>
+        <div class="reading-item">
+          <span class="reading-item-number">2</span>
+          <div class="reading-item-content">
+            <h4>[Author, "Paper Title" (Year)]</h4>
+            <p class="reading-item-meta">Paper</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" aria-labelledby="videos-heading">
+        <h2 id="videos-heading" class="content-section-title">Videos</h2>
+        <div class="reading-item">
+          <span class="reading-item-number">3</span>
+          <div class="reading-item-content">
+            <h4>[Lecture or video title]</h4>
+            <p class="reading-item-meta">Video / Lecture</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" aria-labelledby="podcasts-heading">
+        <h2 id="podcasts-heading" class="content-section-title">Podcasts</h2>
+        <div class="reading-item">
+          <span class="reading-item-number">4</span>
+          <div class="reading-item-content">
+            <h4>[Podcast episode title]</h4>
+            <p class="reading-item-meta">Podcast</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section prose" aria-labelledby="order-heading">
+        <h2 id="order-heading" class="content-section-title">Suggested Order</h2>
+        <p>[Explain the recommended sequence: e.g. start with the introductory book, then foundational papers, supplement with lectures.]</p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand">Third Room</p>
+          <p class="footer-desc">An archive of serious public philosophy.</p>
+        </div>
+        <div>
+          <p class="footer-heading">Explore</p>
+          <ul class="footer-links">
+            <li><a href="../articles/index.html">Articles</a></li>
+            <li><a href="../discussions/index.html">Discussions</a></li>
+            <li><a href="../reading/index.html">Reading Lists</a></li>
+            <li><a href="../archive/index.html">Archive</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-heading">Connect</p>
+          <ul class="footer-links">
+            <li><a href="../participate/index.html">Participate</a></li>
+            <li><a href="../feed.xml">RSS Feed</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Third Room.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

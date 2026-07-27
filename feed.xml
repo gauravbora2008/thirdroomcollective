@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Third Room</title>
+    <link>https://gauravbora2008.github.io/thirdroomcollective/</link>
+    <description>A place for serious public philosophy.</description>
+    <language>en-us</language>
+    <atom:link href="https://gauravbora2008.github.io/thirdroomcollective/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Moral Status of Artificial Intelligence</title>
+      <link>https://gauravbora2008.github.io/thirdroomcollective/discussions/moral-status-of-ai.html</link>
+      <description>Can non-biological systems possess moral standing?</description>
+      <pubDate>Sat, 15 Mar 2026 00:00:00 GMT</pubDate>
+      <guid>https://gauravbora2008.github.io/thirdroomcollective/discussions/moral-status-of-ai.html</guid>
+    </item>
+    <item>
+      <title>Do Animals Have Moral Status?</title>
+      <link>https://gauravbora2008.github.io/thirdroomcollective/discussions/animals-moral-status.html</link>
+      <description>Animal rights, welfare, and moral consideration.</description>
+      <pubDate>Thu, 12 Feb 2026 00:00:00 GMT</pubDate>
+      <guid>https://gauravbora2008.github.io/thirdroomcollective/discussions/animals-moral-status.html</guid>
+    </item>
+    <item>
+      <title>On the Purpose of Public Philosophy</title>
+      <link>https://gauravbora2008.github.io/thirdroomcollective/articles/on-public-philosophy.html</link>
+      <description>What distinguishes public philosophy from academic publishing.</description>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 GMT</pubDate>
+      <guid>https://gauravbora2008.github.io/thirdroomcollective/articles/on-public-philosophy.html</guid>
+    </item>
+    <item>
+      <title>Why the Hard Problem Persists</title>
+      <link>https://gauravbora2008.github.io/thirdroomcollective/articles/consciousness-hard-problem.html</link>
+      <description>Why explanatory gaps in consciousness remain unresolved.</description>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 GMT</pubDate>
+      <guid>https://gauravbora2008.github.io/thirdroomcollective/articles/consciousness-hard-problem.html</guid>
+    </item>
+  </channel>
+</rss>
