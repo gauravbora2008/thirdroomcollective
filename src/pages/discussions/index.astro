@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { seriesList } from "../../data/series";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Discussions — Third Room"
+  description="Written summaries of Third Room discussions, grouped by topic."
+  current="discussions"
+>
+  <div class="container">
+    <header class="page-header">
+      <h1>Discussions</h1>
+      <p class="subtitle">Written summaries after each live event. Browse by topic below.</p>
+    </header>
+
+    <p class="muted">
+      No summaries yet. After each event, add a page here and list it under the
+      matching topic.
+    </p>
+
+    <h2>By topic</h2>
+    <ul class="content-list">
+      {
+        seriesList.map((topic) => (
+          <li>
+            <h3>
+              <a href={`${base}topics/${topic.id}/`}>{topic.title}</a>
+            </h3>
+            <p class="sm muted">No summaries yet.</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>

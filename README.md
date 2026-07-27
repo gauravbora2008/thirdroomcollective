@@ -1,94 +1,78 @@
 # Third Room
 
-A static archive of serious public philosophy — discussions, essays, reading lists, and resources built for clarity, rigor, and permanence.
+Astro static site for Saturday philosophy events, discussion summaries, podcasts, and articles.
 
-## Quick Start
+**Vision & priorities:** see [VISION.md](VISION.md).
 
-Open `index.html` in any modern browser. No build step, no dependencies, no server required.
-
-For local development with search (which loads `assets/data/content-index.json`), use any static file server:
+## Setup
 
 ```bash
-# From the project root — pick one:
-python3 -m http.server 8000
-npx serve .
+npm install
+npm run dev      # local preview
+npm run build    # output → dist/
+npm run preview  # preview the build
 ```
 
-Then visit `http://localhost:8000`.
+## Nav
 
-## Structure
+Home · Events · Podcasts · Discussions · Articles · Topics · About
 
-```
-/
-├── index.html              # Home page
-├── about/                  # About the project
-├── articles/               # Long-form essays (one HTML file per article)
-├── discussions/            # Discussion archives (one HTML file per discussion)
-├── reading/                # Curated reading lists
-├── topics/                 # Topic hub pages (10 topics + topics/index.html)
-├── books/                  # Book notes and guides
-├── podcast/                # Podcast episodes
-├── guest-essays/           # Guest contributions
-├── resources/              # External links and reference materials
-├── participate/            # How to join and contribute
-├── archive/                # Chronological archive
-├── templates/              # Copy-paste templates for new content
-│   ├── article-template.html
-│   ├── discussion-template.html
-│   └── reading-list-template.html
-├── assets/
-│   ├── css/main.css        # All styles
-│   ├── js/main.js          # Theme toggle, navigation, search
-│   ├── data/content-index.json  # Search index — edit when adding pages
-│   └── images/
-├── feed.xml                # RSS feed
-├── sitemap.xml             # Sitemap
-└── robots.txt
-```
+## How content is organized
 
-## Adding Content
+- **Events** — live calls (Saturdays, 12:00 noon IST). About four per month.
+- **Topics** — group related podcasts + discussion summaries (Vegan Philosophy, Atheism & Philosophy of Religion, Continental Philosophy, Indian Philosophy).
+- **Discussions** — written summaries after an event.
+- **Podcasts** — audio episodes after an event.
+- **Articles** — standalone essays (add one by one).
 
-All content is plain HTML. Edit files directly — no generators or build tools.
+Shared chrome lives in `src/layouts/` and `src/components/`. Content pages are under `src/pages/`.
 
-1. **New article** — Copy `templates/article-template.html` to `articles/your-slug.html`. Fill in content. Add a list entry on `articles/index.html`. Add an entry to `assets/data/content-index.json`.
-2. **New discussion** — Copy `templates/discussion-template.html` to `discussions/your-slug.html`. Update `discussions/index.html` and `content-index.json`.
-3. **New reading list** — Copy `templates/reading-list-template.html` to `reading/your-slug.html`. Update `reading/index.html` and `content-index.json`.
-4. **New topic** — Create `topics/your-topic/index.html` using an existing topic as reference. Add to `topics/index.html` and `content-index.json`.
+### Monthly pattern
 
-Each page includes its own header and footer (duplicated for portability). Copy from any existing page at the same directory depth and adjust paths.
+1. Add an entry in `src/data/events.ts` (and optionally a suggested question in `src/data/series.ts`).
+2. Add `src/pages/events/YYYY-MM-DD-slug.astro` wrapping `<EventPage … />`.
+3. After the call: add pages under `src/pages/discussions/` and `src/pages/podcast/`.
+4. Link those from the topic hub (via data later) and the Discussions / Podcasts indexes.
 
-## Path conventions
+## Next events (Aug 2026)
 
-| Page location | CSS/JS path | Example link to home |
-|---------------|-------------|----------------------|
-| Root (`index.html`) | `assets/css/main.css` | `index.html` |
-| One level (`about/`) | `../assets/css/main.css` | `../index.html` |
-| Two levels (`topics/epistemology/`) | `../../assets/css/main.css` | `../../index.html` |
+| Date | Series | Question |
+|------|--------|----------|
+| 1 Aug | Vegan Philosophy | Can speciesism be justified? |
+| 8 Aug | Atheism & Philosophy of Religion | Does the problem of evil make theism unreasonable? |
+| 15 Aug | Continental Philosophy | What is phenomenology asking us to do? |
+| 22 Aug | Indian Philosophy | Is the self real? Ātman, anātman, and what hangs on it |
 
-## JavaScript
+Edit schedule and copy in `src/data/events.ts` and `src/data/series.ts`. Each event page is a thin wrapper under `src/pages/events/`.
 
-`assets/js/main.js` handles only:
+### Wire up Register (Google Form)
 
-- Dark/light theme toggle (saved in `localStorage`)
-- Mobile navigation
-- Site search (reads `assets/data/content-index.json`)
-- Newsletter form placeholder
+1. Create a form at [forms.google.com](https://forms.google.com).
+2. Suggested fields:
+   - **Name** (required, short answer)
+   - **Email** (required, short answer — set response validation to Email)
+   - **Optional:** How did you hear about Third Room? / Questions for the session (paragraph)
+3. Settings → collect email addresses if you want Google’s built-in email field instead of a custom one (either works).
+4. Send → copy link.
+5. On the event page, set the Register button `href` to that URL (replace `#register`).
 
-## Design
+Responses land in Google Sheets automatically.
 
-- Dark mode first (toggle in header)
-- Typography optimized for long-form reading
-- Semantic HTML, keyboard navigation, skip link
-- No frameworks — portable indefinitely
+### Wire up Zoom
 
-## Deployment
+On the same event page, find the Zoom button (`#zoom-link`):
 
-Deploy the entire directory to **GitHub Pages** or **Cloudflare Pages**.
+- Set `href` to your Zoom URL
+- Remove classes `is-disabled` and attribute `aria-disabled="true"`
 
-Live site: [gauravbora2008.github.io/thirdroomcollective](https://gauravbora2008.github.io/thirdroomcollective/)
+## Google Calendar
 
-Update URLs in `sitemap.xml`, `feed.xml`, and `robots.txt` if you move to a custom domain.
+“Add to Google Calendar” is already on the home and event pages (one-off for 1 Aug 2026, Asia/Kolkata). Create a new calendar link when you add each Saturday event.
 
-## License
+## Deploy
 
-Content © 2026 Third Room. Licensed for educational use unless otherwise noted.
+Pushes to `main` build with Astro and publish `dist/` to GitHub Pages via GitHub Actions.
+
+https://gauravbora2008.github.io/thirdroomcollective/
+
+Locally: `npm run build` then `npm run preview`.

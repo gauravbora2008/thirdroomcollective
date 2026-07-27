@@ -1,0 +1,105 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { eventsForSeries, eventPath, formatShortDate } from "../data/events";
+import { getSeries, type SeriesId } from "../data/series";
+
+interface Props {
+  seriesId: SeriesId;
+}
+
+const { seriesId } = Astro.props;
+const series = getSeries(seriesId);
+const base = import.meta.env.BASE_URL;
+const today = new Date().toISOString().slice(0, 10);
+const seriesEvents = eventsForSeries(seriesId);
+const upcoming = seriesEvents.filter((e) => e.date >= today);
+const past = seriesEvents.filter((e) => e.date < today);
+---
+
+<BaseLayout
+  title={`${series.title} — Third Room`}
+  description={`${series.title} series: events, discussion summaries, and podcast episodes.`}
+  current="topics"
+>
+  <div class="container narrow">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href={base}>Home</a><span>/</span>
+      <a href={`${base}topics/`}>Topics</a><span>/</span>
+      {series.title}
+    </nav>
+
+    <header class="page-header">
+      <h1>{series.title}</h1>
+      <p class="subtitle">{series.subtitle}</p>
+    </header>
+
+    <section class="content-block prose">
+      <h2>About</h2>
+      {series.about.map((p) => <p>{p}</p>)}
+    </section>
+
+    <section class="content-block">
+      <h2>Upcoming events</h2>
+      {
+        upcoming.length === 0 ? (
+          <p class="muted">None scheduled yet.</p>
+        ) : (
+          <ul class="content-list">
+            {upcoming.map((event) => (
+              <li>
+                <p class="sm faint">
+                  {formatShortDate(event.date)} · 12:00 noon IST
+                </p>
+                <h3>
+                  <a href={`${base}${eventPath(event)}`}>{series.title}</a>
+                </h3>
+                <p class="sm muted">{event.question}</p>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </section>
+
+    {
+      past.length > 0 && (
+        <section class="content-block">
+          <h2>Past events</h2>
+          <ul class="content-list">
+            {past.map((event) => (
+              <li>
+                <p class="sm faint">
+                  {formatShortDate(event.date)} · 12:00 noon IST
+                </p>
+                <h3>
+                  <a href={`${base}${eventPath(event)}`}>{series.title}</a>
+                </h3>
+                <p class="sm muted">{event.question}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    <section class="content-block prose">
+      <h2>Suggested questions</h2>
+      <p class="muted">
+        Candidates for later Saturdays—pick one, refine it, or bring your own.
+      </p>
+      <ul>
+        {series.suggestedQuestions.map((q) => <li>{q}</li>)}
+      </ul>
+    </section>
+
+    <section class="content-block">
+      <h2>Discussion summaries</h2>
+      <p class="muted">None yet. Posted after each live session.</p>
+    </section>
+
+    <section class="content-block">
+      <h2>Podcast episodes</h2>
+      <p class="muted">None yet. Posted after each live session.</p>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  eventPath,
+  eventTitle,
+  formatShortDate,
+  googleCalendarUrl,
+  upcomingEvents,
+} from "../data/events";
+import { getSeries } from "../data/series";
+
+const base = import.meta.env.BASE_URL;
+const next = upcomingEvents()[0];
+const series = next ? getSeries(next.seriesId) : null;
+const pageUrl = next
+  ? `https://gauravbora2008.github.io/thirdroomcollective/${eventPath(next)}`
+  : "";
+const calendarUrl = next ? googleCalendarUrl(next, pageUrl) : "";
+---
+
+<BaseLayout
+  title="Third Room — Serious Public Philosophy"
+  description="Events, discussions, podcasts, and essays in public philosophy."
+  current="home"
+>
+  <section class="hero container">
+    <h1>Third Room</h1>
+    <p class="tagline">“A place for serious public philosophy.”</p>
+    <p class="hero-intro">
+      Live discussions every Saturday at noon (IST). Podcasts and written
+      summaries follow—organized by topic, built to last.
+    </p>
+  </section>
+
+  <section class="section container">
+    <div class="section-header">
+      <h2>Upcoming event</h2>
+      <a href={`${base}events/`}>All events →</a>
+    </div>
+    {
+      next && series ? (
+        <article class="event-card">
+          <span class="badge">
+            Saturday · {formatShortDate(next.date)} · 12:00 noon IST
+          </span>
+          <h3>
+            <a href={`${base}${eventPath(next)}`}>{eventTitle(next)}</a>
+          </h3>
+          <p class="muted">{next.question}</p>
+          <p class="muted">
+            Topic: <a href={`${base}topics/${series.id}/`}>{series.title}</a>
+          </p>
+          <p class="sm muted">
+            Online · Zoom link coming soon · Register via Google Form
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href={`${base}${eventPath(next)}`}>
+              Event details
+            </a>
+            <a
+              class="btn btn-secondary"
+              href={calendarUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Add to Google Calendar
+            </a>
+          </div>
+        </article>
+      ) : (
+        <p class="muted">No upcoming events scheduled.</p>
+      )
+    }
+  </section>
+
+  <section class="section container">
+    <div class="section-header">
+      <h2>Latest</h2>
+    </div>
+    <ul class="content-list">
+      <li>
+        <h3 class="faint">Discussions</h3>
+        <p class="sm muted">Summaries will appear here after events.</p>
+      </li>
+      <li>
+        <h3 class="faint">Podcasts</h3>
+        <p class="sm muted">Episodes will appear here after events.</p>
+      </li>
+      <li>
+        <h3 class="faint">Articles</h3>
+        <p class="sm muted">Essays will be added one by one.</p>
+      </li>
+    </ul>
+  </section>
+</BaseLayout>

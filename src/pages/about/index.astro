@@ -1,0 +1,85 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="About — Third Room"
+  description="What Third Room is: a long-term archive of serious public philosophy."
+  current="about"
+>
+  <article class="container narrow">
+    <header class="page-header">
+      <h1>About</h1>
+      <p class="subtitle">A place for serious public philosophy.</p>
+    </header>
+
+    <section class="content-block prose">
+      <p>
+        Third Room is a long-term archive—not a social product. The aim is a
+        permanent, well-organized collection of live discussions, written
+        summaries, podcast episodes, and essays that stay useful years after
+        they appear.
+      </p>
+      <p>
+        Think library or journal energy: clarity over cleverness, ideas over
+        personalities, permanence over virality.
+      </p>
+    </section>
+
+    <section class="content-block prose">
+      <h2>What we publish</h2>
+      <ul>
+        <li>
+          <strong>Events</strong> — live Saturday calls (online)
+        </li>
+        <li>
+          <strong>Discussions</strong> — written summaries after each event
+        </li>
+        <li>
+          <strong>Podcasts</strong> — audio episodes after each event
+        </li>
+        <li>
+          <strong>Articles</strong> — standalone essays, added one by one
+        </li>
+        <li>
+          <strong>Topics</strong> — hubs that group related content by subject
+        </li>
+      </ul>
+      <p>
+        Nothing important should exist only in a Zoom recording or a chat
+        thread. Every discussion should leave an artifact.
+      </p>
+    </section>
+
+    <section class="content-block prose">
+      <h2>Cadence</h2>
+      <p>
+        Discussions run on <strong>Saturdays at 12:00 noon IST</strong>, online.
+        About four events per month. Recurring series:
+        <a href={`${base}topics/vegan-philosophy/`}>Vegan Philosophy</a>,
+        <a href={`${base}topics/atheism-philosophy-of-religion/`}
+          >Atheism &amp; Philosophy of Religion</a
+        >,
+        <a href={`${base}topics/continental-philosophy/`}
+          >Continental Philosophy</a
+        >, and
+        <a href={`${base}topics/indian-philosophy/`}>Indian Philosophy</a>.
+      </p>
+      <p>
+        See <a href={`${base}events/`}>upcoming events</a> to join the next
+        conversation.
+      </p>
+    </section>
+
+    <section class="content-block prose">
+      <h2>How to participate</h2>
+      <p>
+        Register via the Google Form on the event page (name and email). Add the
+        session to your calendar, and use the Zoom link when it is posted.
+        Barrier stays low—no accounts required.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

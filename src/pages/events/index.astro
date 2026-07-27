@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  eventPath,
+  eventTitle,
+  formatShortDate,
+  upcomingEvents,
+} from "../../data/events";
+import { getSeries } from "../../data/series";
+
+const base = import.meta.env.BASE_URL;
+const upcoming = upcomingEvents();
+---
+
+<BaseLayout
+  title="Events — Third Room"
+  description="Upcoming and past Third Room events. Saturdays at 12:00 noon IST."
+  current="events"
+>
+  <div class="container">
+    <header class="page-header">
+      <h1>Events</h1>
+      <p class="subtitle">Saturdays · 12:00 noon IST · Online</p>
+      <p class="sm muted">
+        About four events each month. Recurring series include Vegan Philosophy,
+        Atheism &amp; Philosophy of Religion, Continental Philosophy, and Indian
+        Philosophy.
+      </p>
+    </header>
+
+    <h2>Upcoming</h2>
+    {
+      upcoming.length === 0 ? (
+        <p class="muted">No upcoming events.</p>
+      ) : (
+        <ul class="content-list">
+          {upcoming.map((event) => {
+            const series = getSeries(event.seriesId);
+            return (
+              <li>
+                <p class="sm faint">
+                  {formatShortDate(event.date)} · 12:00 noon IST
+                </p>
+                <h3>
+                  <a href={`${base}${eventPath(event)}`}>{eventTitle(event)}</a>
+                </h3>
+                <p class="sm muted">{event.question}</p>
+                <p class="sm muted">
+                  Topic:{" "}
+                  <a href={`${base}topics/${series.id}/`}>{series.title}</a>
+                </p>
+              </li>
+            );
+          })}
+        </ul>
+      )
+    }
+
+    <h2>Past</h2>
+    <p class="muted">No past events yet.</p>
+  </div>
+</BaseLayout>

@@ -1,0 +1,19 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <p class="brand">Third Room</p>
+    <p class="desc">Events, discussions, podcasts, and essays—organized by topic.</p>
+    <nav aria-label="Footer">
+      <a href={`${base}events/`}>Events</a>
+      <a href={`${base}podcast/`}>Podcasts</a>
+      <a href={`${base}discussions/`}>Discussions</a>
+      <a href={`${base}articles/`}>Articles</a>
+      <a href={`${base}topics/`}>Topics</a>
+      <a href={`${base}about/`}>About</a>
+    </nav>
+    <p class="copy">&copy; 2026 Third Room</p>
+  </div>
+</footer>
