@@ -9,6 +9,7 @@ import {
   googleCalendarUrl,
 } from "../data/events";
 import { getSeries } from "../data/series";
+import { siteLinks } from "../data/site";
 
 interface Props {
   date: string;
@@ -28,6 +29,8 @@ const pageUrl = `https://gauravbora2008.github.io/thirdroomcollective/${path}`;
 const calendarUrl = googleCalendarUrl(event, pageUrl);
 const title = eventTitle(event);
 const isUpcoming = event.date >= new Date().toISOString().slice(0, 10);
+const registerUrl = siteLinks.registerFormUrl || "#register";
+const registerReady = Boolean(siteLinks.registerFormUrl);
 ---
 
 <BaseLayout
@@ -78,7 +81,12 @@ const isUpcoming = event.date >= new Date().toISOString().slice(0, 10);
     <section class="content-block">
       <h2>Join</h2>
       <div class="actions">
-        <a class="btn btn-primary" href="#register" id="register-link"
+        <a
+          class="btn btn-primary"
+          href={registerUrl}
+          id="register-link"
+          target={registerReady ? "_blank" : undefined}
+          rel={registerReady ? "noopener noreferrer" : undefined}
           >Register (Google Form)</a
         >
         <a
@@ -95,9 +103,11 @@ const isUpcoming = event.date >= new Date().toISOString().slice(0, 10);
         >
       </div>
       <p class="note" id="register">
-        Registration: paste your Google Form link on the Register button above
-        (see README for suggested fields). Zoom: paste the meeting URL on the
-        Zoom button when you have it.
+        {
+          registerReady
+            ? "Same Google Form for all Saturday events. Responses go to the linked Sheet."
+            : "Registration form not linked yet — see scripts/create-registration-form.gs or README. Zoom: paste the meeting URL on the Zoom button when you have it."
+        }
       </p>
     </section>
 

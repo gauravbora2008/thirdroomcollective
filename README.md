@@ -47,16 +47,18 @@ Edit schedule and copy in `src/data/events.ts` and `src/data/series.ts`. Each ev
 
 ### Wire up Register (Google Form)
 
-1. Create a form at [forms.google.com](https://forms.google.com).
-2. Suggested fields:
-   - **Name** (required, short answer)
-   - **Email** (required, short answer — set response validation to Email)
-   - **Optional:** How did you hear about Third Room? / Questions for the session (paragraph)
-3. Settings → collect email addresses if you want Google’s built-in email field instead of a custom one (either works).
-4. Send → copy link.
-5. On the event page, set the Register button `href` to that URL (replace `#register`).
+**Fastest (auto-create):**
 
-Responses land in Google Sheets automatically.
+1. Open [script.google.com](https://script.google.com) → **New project**
+2. Paste `scripts/create-registration-form.gs`
+3. Run `createRegistrationForm` → authorize
+4. **View → Logs** — copy **Share / Register link**
+5. Paste that URL into `src/data/site.ts` as `registerFormUrl`
+6. Rebuild / publish
+
+The script creates: Name, Email (validated), which August session, optional discussion question, optional “how did you hear,” plus a linked Sheet named **Third Room — Registrations**.
+
+**Manual:** [forms.google.com](https://forms.google.com) → blank form titled **Third Room — Event Registration**, same fields as above → **Send** → copy link → `registerFormUrl` in `src/data/site.ts`.
 
 ### Wire up Zoom
 
