@@ -2,7 +2,7 @@
 node_modules/
 .npm-cache/
 
-# build
+# build (published site is copied to repo root for GitHub Pages)
 dist/
 .astro/
 
@@ -10,5 +10,4 @@ dist/
 npm-debug.log*
 .DS_Store
 *.local
-thirdroom.code-workspace
 thirdroom.code-workspace

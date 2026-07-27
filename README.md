@@ -71,8 +71,15 @@ On the same event page, find the Zoom button (`#zoom-link`):
 
 ## Deploy
 
-Pushes to `main` build with Astro and publish `dist/` to GitHub Pages via GitHub Actions.
+GitHub Pages serves the **built static files at the repo root** (`main` branch).
+
+```bash
+npm run build
+cp -a dist/. ./          # publish build next to source
+git add -A && git commit -m "…"
+git push origin main
+```
+
+CI also builds on push and updates the `gh-pages` branch (optional). Live site:
 
 https://gauravbora2008.github.io/thirdroomcollective/
-
-Locally: `npm run build` then `npm run preview`.
