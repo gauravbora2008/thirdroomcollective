@@ -122,12 +122,12 @@ Keep the barrier low. Do not build a custom auth or CRM until the archive and ca
 
 ## Design intent
 
-- Dark mode first; light mode optional.
-- Lots of whitespace; excellent typography; reading over chrome.
-- Subtle hover only; no flashy animation.
+- Dark mode first (night-library ink + brass); light mode is cool parchment with moss accent.
+- Academic but slightly mysterious: Garamond display, quiet grain, soft vignette—not flashy.
+- Lots of whitespace; reading over chrome. Subtle hover only.
 - Semantic HTML; keyboard-friendly; clear hierarchy.
 
-Reference feel: Linear / Vercel docs / SEP / Apple typography / Obsidian / LessWrong — filtered through “library, not feed.”
+Reference feel: old seminar room after hours / SEP seriousness / Obsidian depth — filtered through “library, not feed.”
 
 ---
 
